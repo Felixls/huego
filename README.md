@@ -1,4 +1,4 @@
-[![huego](https://godoc.org/github.com/amimof/huego?status.svg)](https://godoc.org/github.com/amimof/huego) 
+[![huego](https://godoc.org/github.com/amimof/huego?status.svg)](https://godoc.org/github.com/amimof/huego)
 [![Go Report Card](https://goreportcard.com/badge/github.com/amimof/huego)](https://goreportcard.com/report/github.com/amimof/huego)
 
 # Huego
@@ -19,7 +19,7 @@ Include it in your code. You may use [`New()`](https://godoc.org/github.com/amim
 package main
 
 import (
-  "github.com/amimof/huego"
+  "github.com/Felixls/huego"
   "fmt"
 )
 
@@ -42,7 +42,7 @@ func main() {
   light, _ := bridge.GetLight(3)
   light.Off()
 }
-``` 
+```
 
 ## Documentation
 
@@ -54,4 +54,4 @@ The tests requires an accessible Philips Hue Bridge IP address and a pre-configu
 
 ## Contributing
 
-All help in any form is highly appreciated and your are welcome participate in developing `Huego` together. To contribute, clone the `master` branch and create a `Pull Request`. If you want provide feedback, open up a `New Issue` or contact me personally. 
+All help in any form is highly appreciated and your are welcome participate in developing `Huego` together. To contribute, clone the `master` branch and create a `Pull Request`. If you want provide feedback, open up a `New Issue` or contact me personally.

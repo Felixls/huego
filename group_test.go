@@ -1,9 +1,10 @@
 package huego_test
 
 import (
-	"github.com/amimof/huego"
 	"os"
 	"testing"
+
+	"github.com/Felixls/huego"
 )
 
 func TestGetGroups(t *testing.T) {

@@ -5,8 +5,9 @@ package huego_test
 // export HUE_HOSTNAME=192.168.1.59
 
 import (
-	"github.com/amimof/huego"
 	"testing"
+
+	"github.com/Felixls/huego"
 )
 
 func TestDiscoverAndLoginLazy(t *testing.T) {
