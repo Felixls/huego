@@ -89,7 +89,7 @@ func (b *Bridge) CreateUser(n string) (string, error) {
 		return "", err
 	}
 
-	data, err := json.Marshal(&body)
+	data, err := json.Marshal(body)
 	if err != nil {
 		return "", err
 	}
@@ -132,7 +132,7 @@ func (b *Bridge) UpdateConfig(c *Config) (*Response, error) {
 		return nil, err
 	}
 
-	data, err := json.Marshal(&c)
+	data, err := json.Marshal(*c)
 	if err != nil {
 		return nil, err
 	}
@@ -284,7 +284,7 @@ func (b *Bridge) SetGroupState(i int, l State) (*Response, error) {
 		return nil, err
 	}
 
-	data, err := json.Marshal(&l)
+	data, err := json.Marshal(l)
 	if err != nil {
 		return nil, err
 	}
@@ -318,7 +318,7 @@ func (b *Bridge) UpdateGroup(i int, l Group) (*Response, error) {
 		return nil, err
 	}
 
-	data, err := json.Marshal(&l)
+	data, err := json.Marshal(l)
 	if err != nil {
 		return nil, err
 	}
@@ -351,7 +351,7 @@ func (b *Bridge) CreateGroup(g Group) (*Response, error) {
 		return nil, err
 	}
 
-	data, err := json.Marshal(&g)
+	data, err := json.Marshal(g)
 	if err != nil {
 		return nil, err
 	}
@@ -476,7 +476,7 @@ func (b *Bridge) SetLightState(i int, l State) (*Response, error) {
 	l.Reachable = false
 	l.ColorMode = ""
 
-	data, err := json.Marshal(&l)
+	data, err := json.Marshal(l)
 	if err != nil {
 		return nil, err
 	}
@@ -609,7 +609,7 @@ func (b *Bridge) UpdateLight(i int, light Light) (*Response, error) {
 		return nil, err
 	}
 
-	data, err := json.Marshal(&light)
+	data, err := json.Marshal(light)
 	if err != nil {
 		return nil, err
 	}
@@ -639,7 +639,7 @@ func (b *Bridge) UpdateLight(i int, light Light) (*Response, error) {
 */
 
 // GetResourcelinks returns all resourcelinks known to the bridge
-func (b *Bridge) GetResourcelinks() ([]*Resourcelink, error) {
+func (b *Bridge) GetResourcelinks() ([]Resourcelink, error) {
 
 	var r map[string]Resourcelink
 
@@ -658,14 +658,14 @@ func (b *Bridge) GetResourcelinks() ([]*Resourcelink, error) {
 		return nil, err
 	}
 
-	resourcelinks := make([]*Resourcelink, 0, len(r))
+	resourcelinks := make([]Resourcelink, 0, len(r))
 
 	for i, s := range r {
 		s.ID, err = strconv.Atoi(i)
 		if err != nil {
 			return nil, err
 		}
-		resourcelinks = append(resourcelinks, &s)
+		resourcelinks = append(resourcelinks, s)
 	}
 
 	return resourcelinks, nil
@@ -700,7 +700,7 @@ func (b *Bridge) CreateResourcelink(s *Resourcelink) (*Response, error) {
 
 	var a []*APIResponse
 
-	data, err := json.Marshal(&s)
+	data, err := json.Marshal(*s)
 	if err != nil {
 		return nil, err
 	}
@@ -733,7 +733,7 @@ func (b *Bridge) CreateResourcelink(s *Resourcelink) (*Response, error) {
 func (b *Bridge) UpdateResourcelink(i int, resourcelink *Resourcelink) (*Response, error) {
 	var a []*APIResponse
 
-	data, err := json.Marshal(&resourcelink)
+	data, err := json.Marshal(*resourcelink)
 	if err != nil {
 		return nil, err
 	}
@@ -794,7 +794,7 @@ func (b *Bridge) DeleteResourcelink(i int) error {
 */
 
 // GetRules returns all rules known to the bridge
-func (b *Bridge) GetRules() ([]*Rule, error) {
+func (b *Bridge) GetRules() ([]Rule, error) {
 
 	var r map[string]Rule
 
@@ -813,14 +813,14 @@ func (b *Bridge) GetRules() ([]*Rule, error) {
 		return nil, err
 	}
 
-	rules := make([]*Rule, 0, len(r))
+	rules := make([]Rule, 0, len(r))
 
 	for i, s := range r {
 		s.ID, err = strconv.Atoi(i)
 		if err != nil {
 			return nil, err
 		}
-		rules = append(rules, &s)
+		rules = append(rules, s)
 	}
 
 	return rules, nil
@@ -858,7 +858,7 @@ func (b *Bridge) CreateRule(s *Rule) (*Response, error) {
 
 	var a []*APIResponse
 
-	data, err := json.Marshal(&s)
+	data, err := json.Marshal(*s)
 	if err != nil {
 		return nil, err
 	}
@@ -892,7 +892,7 @@ func (b *Bridge) UpdateRule(i int, rule *Rule) (*Response, error) {
 
 	var a []*APIResponse
 
-	data, err := json.Marshal(&rule)
+	data, err := json.Marshal(*rule)
 	if err != nil {
 		return nil, err
 	}
@@ -1023,7 +1023,7 @@ func (b *Bridge) UpdateScene(id string, s *Scene) (*Response, error) {
 		return nil, err
 	}
 
-	data, err := json.Marshal(&s)
+	data, err := json.Marshal(*s)
 	if err != nil {
 		return nil, err
 	}
@@ -1058,7 +1058,7 @@ func (b *Bridge) SetSceneLightState(id string, iid int, l *State) (*Response, er
 		return nil, err
 	}
 
-	data, err := json.Marshal(&l)
+	data, err := json.Marshal(*l)
 	if err != nil {
 		return nil, err
 	}
@@ -1122,7 +1122,7 @@ func (b *Bridge) CreateScene(s *Scene) (*Response, error) {
 
 	var a []*APIResponse
 
-	data, err := json.Marshal(&s)
+	data, err := json.Marshal(*s)
 	if err != nil {
 		return nil, err
 	}
@@ -1246,7 +1246,7 @@ func (b *Bridge) CreateSchedule(s *Schedule) (*Response, error) {
 
 	var a []*APIResponse
 
-	data, err := json.Marshal(&s)
+	data, err := json.Marshal(*s)
 	if err != nil {
 		return nil, err
 	}
@@ -1280,7 +1280,7 @@ func (b *Bridge) UpdateSchedule(i int, schedule *Schedule) (*Response, error) {
 
 	var a []*APIResponse
 
-	data, err := json.Marshal(&schedule)
+	data, err := json.Marshal(*schedule)
 	if err != nil {
 		return nil, err
 	}
@@ -1404,7 +1404,7 @@ func (b *Bridge) CreateSensor(s *Sensor) (*Response, error) {
 
 	var a []*APIResponse
 
-	data, err := json.Marshal(&s)
+	data, err := json.Marshal(*s)
 	if err != nil {
 		return nil, err
 	}
@@ -1508,7 +1508,7 @@ func (b *Bridge) UpdateSensor(i int, sensor *Sensor) (*Response, error) {
 
 	var a []*APIResponse
 
-	data, err := json.Marshal(&sensor)
+	data, err := json.Marshal(*sensor)
 	if err != nil {
 		return nil, err
 	}
@@ -1566,7 +1566,7 @@ func (b *Bridge) DeleteSensor(i int) error {
 func (b *Bridge) UpdateSensorConfig(i int, c interface{}) (*Response, error) {
 	var a []*APIResponse
 
-	data, err := json.Marshal(&c)
+	data, err := json.Marshal(c)
 	if err != nil {
 		return nil, err
 	}
